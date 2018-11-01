@@ -44,7 +44,7 @@ func (exitcall *exitcall) SetDetail(cmd string, details string) error {
 func (exitcall *exitcall) RoundTripper() http.RoundTripper {
 	crossReqheader := sdk.ExitcallGenerateCrossReqheader(exitcall.exitcallHandle)
 
-	return internal.BonreeRoundTripper(crossReqheader)
+	return bonreeRoundTripper(crossReqheader)
 }
 
 func (exitcall *exitcall) SetCrossResheader(header http.Header) {
