@@ -4,7 +4,6 @@ import (
 	"errors"
 	"bonree/common"
 	"bonree/sdk"
-	"bonree/internal"
 	"net/http"
 )
 
@@ -52,7 +51,7 @@ func (exitcall *exitcall) SetCrossResheader(header http.Header) {
 		return
 	}
 
-	crossResponseHeader := header.Get(internal.CrossResponseHeader)
+	crossResponseHeader := header.Get(common.CrossResponseHeader)
 
 	if crossResponseHeader == "" {
 		return

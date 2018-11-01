@@ -81,7 +81,7 @@ func (btn *btn) WriteHeader(code int) {
 func newBtn(app *app, name string, w http.ResponseWriter, r *http.Request) BusinessTransaction {
 	var handle sdk.BtHandle
 
-	crossReqHeader :=  r.Header.Get(internal.CrossRequestHeader)
+	crossReqHeader :=  r.Header.Get(common.CrossRequestHeader)
 	if crossReqHeader == "" {
 		handle = sdk.BtBegin(app.appHandle, name)
 	} else {		
@@ -89,7 +89,7 @@ func newBtn(app *app, name string, w http.ResponseWriter, r *http.Request) Busin
 
 		crossResHeader := sdk.BtGenerateCrossResheader(handle)
 
-		w.Header().Add(internal.CrossResponseHeader, crossResHeader)
+		w.Header().Add(common.CrossResponseHeader, crossResHeader)
 	}
 
 	sdk.BtSetURL(handle, r.URL.RequestURI())
